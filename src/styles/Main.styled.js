@@ -6,7 +6,7 @@ const Main = styled.main`
   align-items: center;
   max-width: 160rem;
   margin: auto;
-  padding: 0 3rem;
+  padding: 0 3rem 3rem 3rem;
 `;
 
 export { Main };

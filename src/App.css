@@ -10,17 +10,41 @@
   -webkit-box-sizing: inherit;
   box-sizing: inherit;
   font-family: Poppins, sans-serif !important;
-  color: white;
   z-index: 1;
 }
 html {
   font-size: 10px;
 }
 
-/* body {
-  background-color: #27496d;
-} */
+h1,
+h2,
+h3,
+h4,
+p {
+  color: white;
+}
 
+/* Scroll */
+::-webkit-scrollbar {
+  width: 0.8rem;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0.5rem #fff;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5eced4;
+  border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3db2b8;
+}
+
+/* Animations */
 @-webkit-keyframes moveInLeft {
   0% {
     opacity: 0;

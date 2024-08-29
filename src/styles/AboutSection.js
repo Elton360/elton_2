@@ -1,10 +1,14 @@
 import { Image as AntDImage } from "antd";
 import styled from "styled-components";
-import { primaryColorDark } from "./Utilities.styled";
+import { lightText, primaryColorDark } from "./Utilities.styled";
 
 const IconLink = styled.a`
   font-size: 3.5rem;
   margin: 0 2rem;
+  color: ${lightText};
+  &:hover {
+    color: ${primaryColorDark};
+  }
 `;
 
 const Image = styled(AntDImage).attrs({ width: "15rem", preview: false })`

@@ -3,6 +3,7 @@ import { Flex, Tag } from "antd";
 import { DimmedText, H3, HighLightedText, P } from "./styles/Utilities.styled";
 import { Collapse } from "./styles/ExperienceSection.styled";
 import { StyledMinusIcon, StyledPlusIcon } from "./icons/getIcon";
+import getRandomTagColor from "./helpers/getRandomTagColor";
 
 const experiences = [
   {
@@ -45,21 +46,6 @@ const experiences = [
   },
 ];
 
-const colors = [
-  "red",
-  "volcano",
-  "orange",
-  "gold",
-  "lime",
-  "green",
-  "cyan",
-  "blue",
-  "geekblue",
-  "purple",
-];
-
-const getRandomColor = () => colors[Math.floor(Math.random() * colors.length)];
-
 const items = experiences.map(({ name, title, from, to, tags, text }, idx) => ({
   key: idx,
   label: (
@@ -76,7 +62,7 @@ const items = experiences.map(({ name, title, from, to, tags, text }, idx) => ({
       <br />
       <Flex gap="4px 0" wrap>
         {tags.map((tag) => (
-          <Tag key={`${tag}-${name}`} color={getRandomColor()}>
+          <Tag key={`${tag}-${name}`} color={getRandomTagColor()}>
             {tag}
           </Tag>
         ))}
