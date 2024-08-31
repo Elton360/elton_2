@@ -1,13 +1,18 @@
 import { Image as AntDImage } from "antd";
 import styled from "styled-components";
-import { lightText, primaryColorDark } from "./Utilities.styled";
+import {
+  lightText,
+  primaryColorDark,
+  secondaryColor,
+  secondaryColorDark,
+} from "./Utilities.styled";
 
 const IconLink = styled.a`
-  font-size: 3.5rem;
+  font-size: ${({ $small }) => ($small ? "2.5rem" : " 3.5rem")};
   margin: 0 2rem;
-  color: ${lightText};
+  color: ${({ $light }) => ($light ? lightText : secondaryColor)};
   &:hover {
-    color: ${primaryColorDark};
+    color: ${({ $light }) => ($light ? primaryColorDark : secondaryColorDark)};
   }
 `;
 

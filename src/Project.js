@@ -4,6 +4,24 @@ import { Item, ItemImage, ItemTagsWrap } from "./styles/ProjectSection";
 import { EyeOutlined, GithubFilled } from "@ant-design/icons";
 import getRandomTagColor from "./helpers/getRandomTagColor";
 const { Meta } = Card;
+
+const getActions = (github, link) => [
+  ...(github
+    ? [
+        <a href={github} target="_blank" rel="noopener noreferrer">
+          <GithubFilled key="github" />
+        </a>,
+      ]
+    : []),
+  ...(link
+    ? [
+        <a href={link} target="_blank" rel="noopener noreferrer">
+          <EyeOutlined key="link" />
+        </a>,
+      ]
+    : []),
+];
+
 const Project = ({
   link,
   github,
@@ -31,14 +49,7 @@ const Project = ({
           <img alt="example" src={imageSrc} />
         </ItemImage>
       }
-      actions={[
-        <a href={github} target="_blank" rel="noopener noreferrer">
-          <GithubFilled key="setting" />
-        </a>,
-        <a href={link} target="_blank" rel="noopener noreferrer">
-          <EyeOutlined key="setting" />
-        </a>,
-      ]}
+      actions={getActions(github, link)}
     >
       <Meta
         title={`${title}${isWebsite && " Website"}`}

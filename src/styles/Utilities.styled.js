@@ -19,6 +19,8 @@ const DimmedText = styled.span`
 const Flex = styled(AntDFlex)`
   ${({ $w }) => $w && `width: ${$w};`}
   ${({ $mw }) => $mw && `max-width: ${$mw};`}
+  ${({ $h }) => $h && `height: ${$h};`}
+  ${({ $mh }) => $mh && `max-height: ${$mh};`}
 
   ${({ $m }) => $m && `margin: ${$m};`}
   ${({ $mt }) => $mt && `margin-top: ${$mt};`}
@@ -60,6 +62,10 @@ const Button = styled(AntDButton)`
     -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
   }
+
+  &.ant-btn-primary: disabled {
+    border: 0;
+  }
 `;
 
 const PrimaryButton = styled(Button).attrs({ type: "primary" })`
@@ -94,18 +100,22 @@ const Overlay = styled.div`
 
 const H1 = styled.h1`
   font-size: 6rem;
+  ${({ $p }) => $p && `padding: ${$p};`}
 `;
 
 const H2 = styled.h2`
   font-size: 2.75rem;
+  ${({ $p }) => $p && `padding: ${$p};`}
 `;
 
 const H3 = styled.h3`
   font-size: 2rem;
+  ${({ $p }) => $p && `padding: ${$p};`}
 `;
 
 const H4 = styled.h4`
   font-size: 1.5rem;
+  ${({ $p }) => $p && `padding: ${$p};`}
 `;
 
 const SectionSubHeader = styled(H3)`
@@ -117,6 +127,7 @@ const SectionSubHeader = styled(H3)`
 const P = styled.p`
   font-size: 1.6rem;
   ${({ $mw }) => $mw && `max-width: ${$mw};`}
+  ${({ $p }) => $p && `padding: ${$p};`}
 `;
 
 export {

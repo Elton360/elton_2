@@ -20,7 +20,10 @@ import Resume from "./EltonLucienResume.pdf";
 import HeaderBackground from "./HeaderBackground";
 import Nav from "./Nav";
 
-const Header = () => {
+const Header = ({ contactModalState }) => {
+  const [contactModalOpen, setContactModalOpen] = contactModalState;
+  const onContactButtonClick = () => setContactModalOpen(true);
+
   return (
     <HeaderStyled>
       <HeaderBackground />
@@ -29,7 +32,7 @@ const Header = () => {
         <H2>
           <HighLightedText>Elton</HighLightedText> Lucien
         </H2>
-        <Nav />
+        <Nav onContactButtonClick={onContactButtonClick} />
       </Flex>
       <Content>
         <Flex vertical>
@@ -44,7 +47,13 @@ const Header = () => {
             </DimmedText>
           </P>
           <Flex gap="1.5rem" wrap $mt="1.5rem">
-            <PrimaryButton type="primary">Contact</PrimaryButton>
+            <PrimaryButton
+              onClick={onContactButtonClick}
+              type="primary"
+              disabled={contactModalOpen}
+            >
+              Contact
+            </PrimaryButton>
             <SecondaryButton>
               <a href={Resume} target="_blank" rel="noopener noreferrer">
                 Resume

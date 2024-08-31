@@ -8,12 +8,17 @@ import Header from "./Header";
 import AboutSection from "./AboutSection";
 import Section from "./Section";
 import Projects from "./Projects";
+import Footer from "./Footer";
+import Contact from "./Contact";
 
-function App() {
+const App = () => {
+  const contactModalState = useState(false);
+
   return (
     <>
+      <Contact contactModalState={contactModalState} />
       <MainContainer>
-        <Header />
+        <Header contactModalState={contactModalState} />
         <Main>
           <Section title="About Me" id="about">
             <AboutSection />
@@ -28,9 +33,10 @@ function App() {
             <Projects />
           </Section>
         </Main>
+        <Footer />
       </MainContainer>
     </>
   );
-}
+};
 
 export default App;

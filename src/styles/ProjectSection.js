@@ -2,11 +2,23 @@ import styled from "styled-components";
 import { Flex, grayText, secondaryColor } from "./Utilities.styled";
 
 const Items = styled.div`
-  max-width: 100%;
+  max-width: 99vw;
   margin: auto;
-  display: grid;
+  display: flex;
   gap: 2rem;
-  grid-template-columns: repeat(3, 1fr);
+  overflow-x: scroll;
+  z-index: auto;
+
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-track {
+    background: transparent !important;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0 !important;
+  }
 `;
 
 const ItemImage = styled.div`
@@ -51,8 +63,15 @@ const Item = styled.div`
   overflow: hidden;
   margin: 0.8rem;
   border-radius: 0.8rem;
-
+  flex-shrink: 0;
   background: ${secondaryColor};
+  z-index: 0;
+
+  &:hover {
+    z-index: 1;
+    transform: scale(1.025);
+    transition: transform 0.5s;
+  }
 
   &::after {
     content: "";

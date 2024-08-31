@@ -1,26 +1,15 @@
 import React from "react";
 import { Flex, P } from "./styles/Utilities.styled";
-import { aboutLinkIcons } from "./icons/getIcon";
-import { IconLink, Image } from "./styles/AboutSection";
+import Socials from "./Socials";
+import { Image } from "./styles/AboutSection";
 
 const AboutSection = () => (
   <Flex vertical justify="space-around" align="center" id="about" gap="3rem">
     <Flex vertical align="center" gap="3rem">
       <Image src="https://avatars.githubusercontent.com/u/61792119?v=4" />
-      <Flex justify="space-between">
-        {aboutLinkIcons.map(({ key, icon, href }) => (
-          <IconLink
-            key={key}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {icon}
-          </IconLink>
-        ))}
-      </Flex>
+      <Socials lightIcons justify="soace-between" />
     </Flex>
-    <P $mw={"80rem"}>
+    <P $mw="80rem" $p="0 1.6rem">
       I thrive on the process of turning ideas into reality, one line of code at
       a time. In particular, developing web projects allows me to channel my
       creative energy while applying the logical principles that define my work.
