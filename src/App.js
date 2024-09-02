@@ -10,31 +10,39 @@ import Section from "./Section";
 import Projects from "./Projects";
 import Footer from "./Footer";
 import Contact from "./Contact";
+import { IntlProvider } from "react-intl";
+import { navItems } from "./Nav";
+import locales from "./locales/locales";
+
+const sections = {
+  ABOUT_ME: <AboutSection />,
+  SKILLS: <Skills />,
+  EXPERIENCE: <Experiences />,
+  PROJECTS: <Projects />,
+};
 
 const App = () => {
   const contactModalState = useState(false);
+  const [locale, setLocale] = useState(window.navigator.language);
+
+  const messages = locales[locale]?.JSON;
 
   return (
     <>
-      <Contact contactModalState={contactModalState} />
-      <MainContainer>
-        <Header contactModalState={contactModalState} />
-        <Main>
-          <Section title="About Me" id="about">
-            <AboutSection />
-          </Section>
-          <Section title="Skills" id="skills">
-            <Skills />
-          </Section>
-          <Section title="Experience" id="experience">
-            <Experiences />
-          </Section>
-          <Section title="Work and Projects" id="projects">
-            <Projects />
-          </Section>
-        </Main>
-        <Footer />
-      </MainContainer>
+      <IntlProvider locale={locale} messages={messages}>
+        <Contact contactModalState={contactModalState} />
+        <MainContainer>
+          <Header contactModalState={contactModalState} setLocale={setLocale} />
+          <Main>
+            {navItems.map(({ key, name }) => (
+              <Section key={key} title={name} id={key}>
+                {sections[key]}
+              </Section>
+            ))}
+          </Main>
+          <Footer />
+        </MainContainer>
+      </IntlProvider>
     </>
   );
 };

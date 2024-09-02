@@ -3,6 +3,7 @@ import { Card, Tag } from "antd";
 import { Item, ItemImage, ItemTagsWrap } from "./styles/ProjectSection";
 import { EyeOutlined, GithubFilled } from "@ant-design/icons";
 import getRandomTagColor from "./helpers/getRandomTagColor";
+import { FormattedMessage } from "react-intl";
 const { Meta } = Card;
 
 const getActions = (github, link) => [
@@ -22,15 +23,7 @@ const getActions = (github, link) => [
     : []),
 ];
 
-const Project = ({
-  link,
-  github,
-  imageSrc,
-  title,
-  isWebsite,
-  description,
-  tags,
-}) => (
+const Project = ({ link, github, imageSrc, title, description, tags }) => (
   <Item key={link || github}>
     <ItemTagsWrap>
       {tags.map((tag) => (
@@ -52,10 +45,11 @@ const Project = ({
       actions={getActions(github, link)}
     >
       <Meta
-        title={`${title}${isWebsite && " Website"}`}
-        description={description}
+        title={<FormattedMessage {...title} />}
+        description={<FormattedMessage {...description} />}
       />
     </Card>
   </Item>
 );
+
 export default Project;

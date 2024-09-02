@@ -1,30 +1,78 @@
 import React from "react";
-import { Anchor } from "./styles/Header.styled";
+import {
+  Anchor,
+  // AnchorButton,
+  LocaleDropDownButton,
+  LocaleDropDownOptionText,
+} from "./styles/Header.styled";
 import { Flex } from "./styles/Utilities.styled";
 import scrollToSection from "./helpers/scrollTo";
+import messages from "./locales/messages";
+import { FormattedMessage, useIntl } from "react-intl";
+import { Dropdown } from "antd";
+import locales from "./locales/locales";
 
-const sections = ["about", "skills", "experience", "projects", "contact"];
-const items = sections.map((section) => ({
-  key: section,
-  href: `#${section}`,
-  title: section.charAt(0).toUpperCase() + section.slice(1),
+export const navItems = [
+  { key: "ABOUT_ME", name: messages.aboutMe },
+  { key: "SKILLS", name: messages.skills },
+  { key: "EXPERIENCE", name: messages.experience },
+  { key: "PROJECTS", name: messages.projects },
+];
+
+const navAnchors = navItems.map(({ key, name }) => ({
+  key,
+  href: `#${key}`,
+  title: name,
 }));
 
-const Nav = ({ onContactButtonClick }) => (
-  <Flex gap="2rem">
-    {items.map(({ key, href, title }) => (
-      <Anchor
-        key={key}
-        href={href}
-        onClick={(e) => {
-          e.preventDefault();
-          key === "contact" ? onContactButtonClick() : scrollToSection(key);
+const options = [
+  {
+    label: (
+      <LocaleDropDownOptionText>
+        <FormattedMessage {...messages.english} />
+      </LocaleDropDownOptionText>
+    ),
+    key: "en-US",
+  },
+  {
+    label: (
+      <LocaleDropDownOptionText>
+        <FormattedMessage {...messages.french} />
+      </LocaleDropDownOptionText>
+    ),
+    key: "fr-FR",
+  },
+];
+
+const Nav = ({ onContactButtonClick, setLocale }) => {
+  const { locale } = useIntl();
+  const localeShortName = locales[locale].shortName;
+
+  return (
+    <Flex gap="2rem">
+      {navAnchors.map(({ key, href, title }) => (
+        <Anchor
+          key={key}
+          href={href}
+          onClick={(el) => scrollToSection(el, key)}
+        >
+          <FormattedMessage {...title} />
+        </Anchor>
+      ))}
+      {/* <AnchorButton onClick={onContactButtonClick}>
+        <FormattedMessage {...messages.contact} />
+      </AnchorButton> */}
+      <Dropdown
+        menu={{
+          items: options,
+          onClick: (option) => setLocale(option.key),
         }}
+        placement="bottomRight"
       >
-        {title}
-      </Anchor>
-    ))}
-  </Flex>
-);
+        <LocaleDropDownButton>{localeShortName}</LocaleDropDownButton>
+      </Dropdown>
+    </Flex>
+  );
+};
 
 export default Nav;

@@ -11,7 +11,7 @@ import {
   HighLightedText,
   Overlay,
   P,
-  PrimaryButton,
+  // PrimaryButton,
   SecondaryButton,
   Flex,
   DimmedText,
@@ -19,10 +19,16 @@ import {
 import Resume from "./EltonLucienResume.pdf";
 import HeaderBackground from "./HeaderBackground";
 import Nav from "./Nav";
+import { FormattedMessage } from "react-intl";
+import messages from "./locales/messages";
+import profile from "./config/profile";
 
-const Header = ({ contactModalState }) => {
-  const [contactModalOpen, setContactModalOpen] = contactModalState;
+const Header = ({ contactModalState, setLocale }) => {
+  const [, setContactModalOpen] = contactModalState;
   const onContactButtonClick = () => setContactModalOpen(true);
+
+  const { firstName, lastName, jobTitle, bio } = profile;
+  const fullName = `${firstName} ${lastName}`;
 
   return (
     <HeaderStyled>
@@ -30,33 +36,37 @@ const Header = ({ contactModalState }) => {
       <Overlay />
       <Flex align="center" justify="space-between" $m="auto">
         <H2>
-          <HighLightedText>Elton</HighLightedText> Lucien
+          <HighLightedText>{firstName}</HighLightedText> {lastName}
         </H2>
-        <Nav onContactButtonClick={onContactButtonClick} />
+        <Nav
+          onContactButtonClick={onContactButtonClick}
+          setLocale={setLocale}
+        />
       </Flex>
       <Content>
         <Flex vertical>
           <H2>
-            <HighLightedText>Software Engineer</HighLightedText>
+            <HighLightedText>
+              <FormattedMessage {...jobTitle} />
+            </HighLightedText>
           </H2>
-          <H1>Elton Lucien</H1>
+          <H1>{fullName}</H1>
           <P>
             <DimmedText>
-              I build pixel-perfect, engaging, and accessible digital
-              experiences.
+              <FormattedMessage {...bio} />
             </DimmedText>
           </P>
           <Flex gap="1.5rem" wrap $mt="1.5rem">
-            <PrimaryButton
+            {/* <PrimaryButton
               onClick={onContactButtonClick}
               type="primary"
               disabled={contactModalOpen}
             >
-              Contact
-            </PrimaryButton>
+              <FormattedMessage {...messages.contact} />
+            </PrimaryButton> */}
             <SecondaryButton>
               <a href={Resume} target="_blank" rel="noopener noreferrer">
-                Resume
+                <FormattedMessage {...messages.resume} />
               </a>
             </SecondaryButton>
           </Flex>

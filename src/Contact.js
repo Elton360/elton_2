@@ -45,7 +45,6 @@ const Contact = ({ contactModalState }) => {
         onCancel={() => setContactModalOpen(false)}
       >
         <ContactForm
-          centered
           labelCol={{
             span: 4,
           }}
@@ -56,7 +55,6 @@ const Contact = ({ contactModalState }) => {
           initialValues={{
             size: "large",
           }}
-          //   onValuesChange={onFormLayoutChange}
           size={"large"}
         >
           <Form.Item>

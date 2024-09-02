@@ -1,8 +1,15 @@
 import styled from "styled-components";
-import { Flex, grayText, secondaryColor } from "./Utilities.styled";
+import {
+  Flex,
+  grayText,
+  primaryColorDark,
+  secondaryColor,
+} from "./Utilities.styled";
 
 const Items = styled.div`
-  max-width: 99vw;
+  padding-left: 6rem;
+  position: relative;
+  max-width: 100vw;
   margin: auto;
   display: flex;
   gap: 2rem;
@@ -51,7 +58,7 @@ const ItemTagsWrap = styled(Flex)`
   gap: 1rem;
   justify-content: center;
   opacity: 0;
-  z-index: 10;
+  z-index: 3;
   position: absolute;
   width: 100%;
   top: 3rem;
@@ -110,4 +117,49 @@ const Item = styled.div`
   }
 `;
 
-export { Items, ItemImage, ItemTagsWrap, Item };
+const ScrollButton = styled.button`
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  position: absolute;
+  top: 8px;
+  font-size: 5rem;
+  color: #fff;
+  height: 448px;
+
+  &: hover {
+    color: ${primaryColorDark};
+  }
+
+  @media (min-width: 2273px) {
+    display: none;
+  }
+  @media (max-width: 568px) {
+    display: none;
+  }
+`;
+const LeftScrollButton = styled(ScrollButton)`
+  background-color: rgba(0, 0, 0, 0.3);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  left: ${({ $scrollAmount }) => `${$scrollAmount || 0}px`};
+`;
+
+const RightScrollButton = styled(ScrollButton)`
+  background-color: rgba(0, 0, 0, 0.5);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  right: ${({ $scrollAmount }) => `${-$scrollAmount + 68 || 68}px`};
+`;
+
+export {
+  Items,
+  ItemImage,
+  ItemTagsWrap,
+  Item,
+  LeftScrollButton,
+  RightScrollButton,
+};

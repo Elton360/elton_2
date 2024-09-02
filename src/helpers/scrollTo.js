@@ -1,4 +1,5 @@
-const scrollToSection = (id) => {
+const scrollToSection = (el, id) => {
+  el.preventDefault();
   const element = document.getElementById(id);
   if (element) {
     const y = element.getBoundingClientRect().top + window.scrollY + -60;

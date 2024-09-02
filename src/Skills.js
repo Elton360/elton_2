@@ -3,26 +3,26 @@ import Skill from "./Skill";
 import { getSkillIcon } from "./icons/getIcon";
 import { SkillsContainer } from "./styles/SkillsSection";
 
-const orderedIcons = [
-  "html",
-  "css",
-  "javascript",
-  "typescript",
-  "react",
-  "node",
-  "java",
-  "spring",
-  "firebase",
-  "mongo",
-  "sql",
-  "graphql",
-  "git",
+const orderedIconKeys = [
+  "HTML",
+  "CSS",
+  "JAVASCRIPT",
+  "TYPESCRIPT",
+  "REACT",
+  "NODE",
+  "JAVA",
+  "SPRING",
+  "FIREBASE",
+  "MONGO",
+  "SQL",
+  "GRAPHQL",
+  "GIT",
 ];
 
 const Skills = () => {
   return (
     <SkillsContainer>
-      {orderedIcons.map((icon) => (
+      {orderedIconKeys.map((icon) => (
         <Skill key={icon} {...getSkillIcon(icon)} />
       ))}
     </SkillsContainer>
