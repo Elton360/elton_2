@@ -6,6 +6,10 @@ import {
   secondaryColor,
 } from "./Utilities.styled";
 
+const Container = styled.div`
+  position: relative;
+`;
+
 const Items = styled.div`
   max-width: 100vw;
   margin: auto;
@@ -172,6 +176,7 @@ const RightScrollButton = styled(ScrollButton)`
 `;
 
 export {
+  Container,
   Items,
   ItemImage,
   ItemTagsWrap,

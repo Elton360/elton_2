@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import {
+  Container,
   Items,
   LeftScrollButton,
   RightScrollButton,
@@ -22,7 +23,7 @@ const Projects = () => {
   };
 
   return (
-    <div style={{ position: "relative" }}>
+    <Container>
       <Items ref={containerRef}>
         <LeftScrollButton
           onClick={() => scrollByAmount(PROJECT_CARD_WIDTH)}
@@ -45,7 +46,7 @@ const Projects = () => {
           <RightOutlined />
         </RightScrollButton>
       </Items>
-    </div>
+    </Container>
   );
 };
 
