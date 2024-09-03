@@ -23,8 +23,17 @@ const getActions = (github, link) => [
     : []),
 ];
 
-const Project = ({ link, github, imageSrc, title, description, tags }) => (
-  <Item key={link || github}>
+const Project = ({
+  link,
+  github,
+  imageSrc,
+  title,
+  description,
+  tags,
+  firstChild,
+  lastChild,
+}) => (
+  <Item key={link || github} $firstChild={firstChild} $lastChild={lastChild}>
     <ItemTagsWrap>
       {tags.map((tag) => (
         <Tag key={`${tag}`} color={getRandomTagColor()}>

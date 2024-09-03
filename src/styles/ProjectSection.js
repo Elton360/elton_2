@@ -7,8 +7,6 @@ import {
 } from "./Utilities.styled";
 
 const Items = styled.div`
-  padding-left: 6rem;
-  position: relative;
   max-width: 100vw;
   margin: auto;
   display: flex;
@@ -25,6 +23,14 @@ const Items = styled.div`
 
   &::-webkit-scrollbar {
     width: 0 !important;
+  }
+
+  @media (min-width: 2273px) {
+    padding-left: 3rem;
+  }
+
+  @media (max-width: 568px) {
+    padding-left: 3rem;
   }
 `;
 
@@ -115,12 +121,19 @@ const Item = styled.div`
     color: ${grayText};
     font-size: 2rem;
   }
+
+  margin-left: ${({ $firstChild }) => ($firstChild ? "8rem" : "0.8rem")};
+  margin-right: ${({ $lastChild }) => ($lastChild ? "8rem" : "0.8rem")};
+
+  @media (max-width: 568px) {
+    margin: 0.8rem !important;
+  }
 `;
 
 const ScrollButton = styled.button`
   color: inherit;
   border: none;
-  padding: 0;
+  padding: 0 1rem;
   font: inherit;
   cursor: pointer;
   outline: inherit;
@@ -128,7 +141,8 @@ const ScrollButton = styled.button`
   top: 8px;
   font-size: 5rem;
   color: #fff;
-  height: 448px;
+  height: 44.8rem;
+  z-index: 3;
 
   &: hover {
     color: ${primaryColorDark};
@@ -143,16 +157,18 @@ const ScrollButton = styled.button`
 `;
 const LeftScrollButton = styled(ScrollButton)`
   background-color: rgba(0, 0, 0, 0.3);
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  left: ${({ $scrollAmount }) => `${$scrollAmount || 0}px`};
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  left: 0;
+  display: ${({ $scrollAmount }) => $scrollAmount > 1146 && "none"};
 `;
 
 const RightScrollButton = styled(ScrollButton)`
   background-color: rgba(0, 0, 0, 0.5);
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-  right: ${({ $scrollAmount }) => `${-$scrollAmount + 68 || 68}px`};
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  right: 0;
+  display: ${({ $scrollAmount }) => !$scrollAmount && "none"};
 `;
 
 export {
