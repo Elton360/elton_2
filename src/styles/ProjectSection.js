@@ -126,7 +126,7 @@ const Item = styled.div`
   margin-right: ${({ $lastChild }) => ($lastChild ? "8rem" : "0.8rem")};
 
   @media (max-width: 568px) {
-    margin: 0.8rem !important;
+    margin-left: 0.8rem !important;
   }
 `;
 
