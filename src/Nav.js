@@ -10,7 +10,7 @@ import scrollToSection from "./helpers/scrollTo";
 import messages from "./locales/messages";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Dropdown } from "antd";
-import locales from "./locales/locales";
+import getLocaleById from "./locales/locales";
 
 export const navItems = [
   { key: "ABOUT_ME", name: messages.aboutMe },
@@ -44,9 +44,9 @@ const options = [
   },
 ];
 
-const Nav = ({ onContactButtonClick, setLocale }) => {
+const Nav = ({ /*onContactButtonClick,*/ setLocale }) => {
   const { locale } = useIntl();
-  const localeShortName = locales[locale].shortName;
+  const { shortName } = getLocaleById(locale);
 
   return (
     <Flex gap="2rem">
@@ -65,11 +65,11 @@ const Nav = ({ onContactButtonClick, setLocale }) => {
       <Dropdown
         menu={{
           items: options,
-          onClick: (option) => setLocale(option.key),
+          onClick: ({ key }) => setLocale(key),
         }}
         placement="bottomRight"
       >
-        <LocaleDropDownButton>{localeShortName}</LocaleDropDownButton>
+        <LocaleDropDownButton>{shortName}</LocaleDropDownButton>
       </Dropdown>
     </Flex>
   );

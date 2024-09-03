@@ -1,9 +1,17 @@
 import messages from "./messages";
+import enMessages from "./en.json";
 import frMessages from "./fr.json";
 
-const locales = {
-  "en-US": { name: messages.english, shortName: "EN" },
-  "fr-FR": { name: messages.french, shortName: "FR", JSON: frMessages },
+const defaultMessage = {
+  name: messages.english,
+  shortName: "EN",
+  messages: enMessages,
 };
 
-export default locales;
+const getLocaleById = (id) =>
+  ({
+    "en-US": defaultMessage,
+    "fr-FR": { name: messages.french, shortName: "FR", messages: frMessages },
+  }[id] || defaultMessage);
+
+export default getLocaleById;
