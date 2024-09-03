@@ -30,7 +30,7 @@ const items = experiences.map(({ name, title, from, to, tags, text }, idx) => ({
         <FormattedMessage {...text} />
       </P>
       <br />
-      <Flex gap=".4erm 0" wrap>
+      <Flex gap="1rem 0.4rem" wrap>
         {tags.map((tag) => (
           <Tag key={`${tag}-${name}`} color={getRandomTagColor()}>
             {tag}

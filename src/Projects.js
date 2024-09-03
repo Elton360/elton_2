@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import {
+  Container,
   Items,
   LeftScrollButton,
   RightScrollButton,
@@ -9,6 +10,8 @@ import profile from "./config/profile";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
 
 const { projects } = profile;
+
+const PROJECT_CARD_WIDTH = 382;
 
 const Projects = () => {
   const containerRef = useRef(null);
@@ -20,23 +23,30 @@ const Projects = () => {
   };
 
   return (
-    <Items ref={containerRef}>
-      <LeftScrollButton
-        onClick={() => scrollByAmount(346)}
-        $scrollAmount={scrollAmount}
-      >
-        <LeftOutlined />
-      </LeftScrollButton>
-      {projects.map((props) => (
-        <Project key={props.imageSrc} {...props} />
-      ))}
-      <RightScrollButton
-        onClick={() => scrollByAmount(-346)}
-        $scrollAmount={scrollAmount}
-      >
-        <RightOutlined />
-      </RightScrollButton>
-    </Items>
+    <Container>
+      <Items ref={containerRef}>
+        <LeftScrollButton
+          onClick={() => scrollByAmount(PROJECT_CARD_WIDTH)}
+          $scrollAmount={scrollAmount}
+        >
+          <LeftOutlined />
+        </LeftScrollButton>
+        {projects.map((props, idx) => (
+          <Project
+            key={props.imageSrc}
+            {...props}
+            firstChild={idx === 0}
+            lastChild={idx === projects.length - 1}
+          />
+        ))}
+        <RightScrollButton
+          onClick={() => scrollByAmount(-PROJECT_CARD_WIDTH)}
+          $scrollAmount={scrollAmount}
+        >
+          <RightOutlined />
+        </RightScrollButton>
+      </Items>
+    </Container>
   );
 };
 
