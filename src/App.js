@@ -12,7 +12,7 @@ import Footer from "./Footer";
 import Contact from "./Contact";
 import { IntlProvider } from "react-intl";
 import { navItems } from "./Nav";
-import locales from "./locales/locales";
+import getLocaleById from "./locales/locales";
 
 const sections = {
   ABOUT_ME: <AboutSection />,
@@ -25,7 +25,7 @@ const App = () => {
   const contactModalState = useState(false);
   const [locale, setLocale] = useState(window.navigator.language);
 
-  const messages = locales[locale]?.JSON;
+  const { messages } = getLocaleById(locale);
 
   return (
     <>
