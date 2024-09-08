@@ -1,6 +1,6 @@
-import messages from "./messages";
-import enMessages from "./en.json";
-import frMessages from "./fr.json";
+import messages from "../locales/messages";
+import enMessages from "../locales/en.json";
+import frMessages from "../locales/fr.json";
 
 const defaultMessage = {
   name: messages.english,
@@ -10,7 +10,6 @@ const defaultMessage = {
 
 const getLocaleById = (id) =>
   ({
-    "en-US": defaultMessage,
     "fr-FR": { name: messages.french, shortName: "FR", messages: frMessages },
   }[id] || defaultMessage);
 
