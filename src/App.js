@@ -12,7 +12,7 @@ import Footer from "./Footer";
 import Contact from "./Contact";
 import { IntlProvider } from "react-intl";
 import { navItems } from "./Nav";
-import getLocaleById from "./locales/locales";
+import getLocaleById from "./helpers/getLocaleById";
 
 const sections = {
   ABOUT_ME: <AboutSection />,

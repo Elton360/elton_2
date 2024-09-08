@@ -10,7 +10,7 @@ import scrollToSection from "./helpers/scrollTo";
 import messages from "./locales/messages";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Dropdown } from "antd";
-import getLocaleById from "./locales/locales";
+import getLocaleById from "./helpers/getLocaleById";
 
 export const navItems = [
   { key: "ABOUT_ME", name: messages.aboutMe },
