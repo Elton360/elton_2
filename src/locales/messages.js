@@ -69,6 +69,10 @@ const messages = defineMessages({
     id: "french",
     defaultMessage: "French",
   },
+  spanish: {
+    id: "spanish",
+    defaultMessage: "Spanish",
+  },
   bio: {
     id: "bio",
     defaultMessage:

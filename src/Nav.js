@@ -42,6 +42,14 @@ const options = [
     ),
     key: "fr-FR",
   },
+  {
+    label: (
+      <LocaleDropDownOptionText>
+        <FormattedMessage {...messages.spanish} />
+      </LocaleDropDownOptionText>
+    ),
+    key: "es-ES",
+  },
 ];
 
 const Nav = ({ /*onContactButtonClick,*/ setLocale }) => {
