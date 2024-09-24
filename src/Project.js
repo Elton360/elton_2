@@ -48,7 +48,7 @@ const Project = ({
       }}
       cover={
         <ItemImage>
-          <img alt="example" src={imageSrc} />
+          <img alt="" src={imageSrc} />
         </ItemImage>
       }
       actions={getActions(github, link)}
