@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./App.css";
 import { MainContainer } from "./styles/Layout.styled";
 import { Main } from "./styles/Main.styled";
 import Skills from "./Skills";
@@ -13,6 +12,7 @@ import Contact from "./Contact";
 import { IntlProvider } from "react-intl";
 import { navItems } from "./Nav";
 import getLocaleById from "./helpers/getLocaleById";
+import GlobalStyle from "./styles/GlobalStyles";
 
 const sections = {
   ABOUT_ME: <AboutSection />,
@@ -30,6 +30,7 @@ const App = () => {
   return (
     <>
       <IntlProvider locale={locale} messages={messages}>
+        <GlobalStyle />
         <Contact contactModalState={contactModalState} />
         <MainContainer>
           <Header contactModalState={contactModalState} setLocale={setLocale} />

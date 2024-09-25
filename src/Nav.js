@@ -3,7 +3,6 @@ import {
   Anchor,
   // AnchorButton,
   LocaleDropDownButton,
-  LocaleDropDownOptionText,
 } from "./styles/Header.styled";
 import { Flex } from "./styles/Utilities.styled";
 import scrollToSection from "./helpers/scrollTo";
@@ -11,6 +10,7 @@ import messages from "./locales/messages";
 import { FormattedMessage, useIntl } from "react-intl";
 import { Dropdown } from "antd";
 import getLocaleById from "./helpers/getLocaleById";
+import createLocaleOption from "./helpers/createLocaleOption";
 
 export const navItems = [
   { key: "ABOUT_ME", name: messages.aboutMe },
@@ -25,23 +25,11 @@ const navAnchors = navItems.map(({ key, name }) => ({
   title: name,
 }));
 
-const options = [
-  {
-    label: (
-      <LocaleDropDownOptionText>
-        <FormattedMessage {...messages.english} />
-      </LocaleDropDownOptionText>
-    ),
-    key: "en-US",
-  },
-  {
-    label: (
-      <LocaleDropDownOptionText>
-        <FormattedMessage {...messages.french} />
-      </LocaleDropDownOptionText>
-    ),
-    key: "fr-FR",
-  },
+const localeOptions = [
+  createLocaleOption(messages.creole, "ht-HT"),
+  createLocaleOption(messages.english, "en-US"),
+  createLocaleOption(messages.french, "fr-FR"),
+  createLocaleOption(messages.spanish, "es-ES"),
 ];
 
 const Nav = ({ /*onContactButtonClick,*/ setLocale }) => {
@@ -64,7 +52,7 @@ const Nav = ({ /*onContactButtonClick,*/ setLocale }) => {
       </AnchorButton> */}
       <Dropdown
         menu={{
-          items: options,
+          items: localeOptions,
           onClick: ({ key }) => setLocale(key),
         }}
         placement="bottomRight"

@@ -4,7 +4,6 @@ import {
   HeaderBg,
 } from "./styles/Header.styled";
 import React from "react";
-import "./App.css";
 import {
   H1,
   H2,
